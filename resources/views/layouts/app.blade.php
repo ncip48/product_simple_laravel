@@ -91,7 +91,7 @@
                         <div class="col-lg-2 col-md-3 col-4">
                             <div class="logo">
                                 <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logo.png') }}"
-                                        alt=""></a>
+                                        alt="" style="height: 50px"></a>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-12">
