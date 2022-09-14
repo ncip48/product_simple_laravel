@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
 @section('content')
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
@@ -98,7 +99,8 @@
                                                 </ul>
                                             </div>
                                             <div class="price_box">
-                                                <span class="current_price">{{ $product->price }}</span>
+                                                <span
+                                                    class="current_price">{{ number_format($product->price, 0, ',', '.') }}¥</span>
                                             </div>
                                             <div class="product_desc">
                                                 <p>{{ $product->description }}</p>

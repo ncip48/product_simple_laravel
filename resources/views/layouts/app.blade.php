@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Antomi - shop list</title>
+    <title>GPBMScript - @yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -115,11 +115,18 @@
                                     </a>
                                 </div> --}}
                                 @auth
+                                    @php
+                                        $cart_count = \App\Models\Cart::where('user_id', Auth::user()->id)->sum('qty');
+                                        $cart_price = \App\Models\Cart::where('user_id', Auth::user()->id)->sum('total');
+                                    @endphp
                                     <div class="mini_cart_wrapper" id="mini_cart_wrapper">
                                         <a href="javascript:void(0)">
                                             <i class="fa fa-shopping-bag"></i>
-                                            <span class="cart_price">$152.00 <i class="ion-ios-arrow-down"></i></span>
-                                            <span class="cart_count">2</span>
+                                            <span class="cart_price">{{ number_format($cart_price, 0, ',', '.') }}¥<i
+                                                    class="ion-ios-arrow-down"></i></span>
+                                            @if ($cart_count > 0)
+                                                <span class="cart_count">{{ $cart_count }}</span>
+                                            @endif
 
                                         </a>
                                     </div>
@@ -148,38 +155,36 @@
                             <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                         </div>
                     </div>
-                    <div class="cart_item">
-                        <div class="cart_img">
-                            <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                    @php
+                        $carts = \App\Models\Cart::where('user_id', Auth::user()->id)
+                            ->join('products', 'carts.product_id', '=', 'products.id')
+                            ->get();
+                        $cart_price = \App\Models\Cart::where('user_id', Auth::user()->id)->sum('total');
+                    @endphp
+                    @foreach ($carts as $cart)
+                        <div class="cart_item">
+                            <div class="cart_img">
+                                <a href="#"><img src="{{ asset('assets/img/' . $cart->image) }}"
+                                        alt=""></a>
+                            </div>
+                            <div class="cart_info">
+                                <a href="#">{{ $cart->name }}</a>
+                                <p>Qty: {{ $cart->qty }} X <span> {{ number_format($cart->price, 0, ',', '.') }}¥
+                                    </span></p>
+                            </div>
+                            <div class="cart_remove">
+                                <a href="#"><i class="ion-android-close"></i></a>
+                            </div>
                         </div>
-                        <div class="cart_info">
-                            <a href="#">Primis In Faucibus</a>
-                            <p>Qty: 1 X <span> $60.00 </span></p>
-                        </div>
-                        <div class="cart_remove">
-                            <a href="#"><i class="ion-android-close"></i></a>
-                        </div>
-                    </div>
-                    <div class="cart_item">
-                        <div class="cart_img">
-                            <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
-                        </div>
-                        <div class="cart_info">
-                            <a href="#">Letraset Sheets</a>
-                            <p>Qty: 1 X <span> $60.00 </span></p>
-                        </div>
-                        <div class="cart_remove">
-                            <a href="#"><i class="ion-android-close"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="mini_cart_table">
                         <div class="cart_total">
                             <span>Sub total:</span>
-                            <span class="price">$138.00</span>
+                            <span class="price">{{ number_format($cart_price, 0, ',', '.') }}¥</span>
                         </div>
                         <div class="cart_total mt-10">
                             <span>total:</span>
-                            <span class="price">$138.00</span>
+                            <span class="price">{{ number_format($cart_price, 0, ',', '.') }}¥</span>
                         </div>
                     </div>
                     <div class="mini_cart_footer">
@@ -292,11 +297,11 @@
                             </div>
                             <div class="app_img">
                                 <figure class="app_img">
-                                    <a href="#"><img src="assets/img/icon/icon-appstore.png"
+                                    <a href="#"><img src="{{ asset('assets/img/icon-appstore.png') }}"
                                             alt=""></a>
                                 </figure>
                                 <figure class="app_img">
-                                    <a href="#"><img src="assets/img/icon/icon-googleplay.png"
+                                    <a href="#"><img src="{{ asset('assets/img/icon-googleplay.png') }}"
                                             alt=""></a>
                                 </figure>
                             </div>
@@ -353,13 +358,13 @@
                             <div class="footer_contact">
                                 <div class="footer_contact_inner">
                                     <div class="contact_icone">
-                                        <img src="assets/img/icon/icon-phone.png" alt="">
+                                        <img src="{{ asset('assets/img/icon-phone.png') }}" alt="">
                                     </div>
                                     <div class="contact_text">
                                         <p>Hotline Free 24/24: <br> <strong>0123456789</strong></p>
                                     </div>
                                 </div>
-                                <p>Your address goes here. <br> demo@example.com</p>
+                                <p>support@gpbmscript.com</p>
                             </div>
 
                             <div class="footer_social">
@@ -389,7 +394,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="footer_payment text-right">
-                            <img src="assets/img/icon/payment.png" alt="">
+                            <img src="{{ asset('assets/img/payment.png') }}" alt="">
                         </div>
                     </div>
                 </div>

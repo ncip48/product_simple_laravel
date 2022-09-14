@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Detail Product')
 @section('content')
     <div class="breadcrumbs_area">
         <div class="container">
@@ -35,8 +36,8 @@
                         </div>
                         <div class="col-lg-7 col-md-6">
                             <div class="product_d_right">
-                                <form action="#">
-
+                                <form action="{{ url('cart') }}" method="POST">
+                                    @csrf
                                     <h3><a href="#">{{ $product->name }}</a></h3>
                                     <div class="product_rating">
                                         <ul>
@@ -49,7 +50,8 @@
                                         </ul>
                                     </div>
                                     <div class="price_box">
-                                        <span class="current_price">{{ $product->price }}</span>
+                                        <span
+                                            class="current_price">{{ number_format($product->price, 0, ',', '.') }}¥</span>
                                     </div>
                                     <div class="product_desc">
                                         <p>{{ $product->description }}</p>
@@ -60,6 +62,7 @@
                                     <div class="product_variant quantity">
                                         <label>quantity</label>
                                         <input min="1" max="100" value="1" type="number">
+                                        <input type="hidden" value="{{ $product->id }}" name="product_id">
                                         <button class="button" type="submit">add to cart</button>
 
                                     </div>
