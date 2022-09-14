@@ -1375,6 +1375,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 100%;
   font-size: 20px;
 }
+
+.mini_cart_wrapper > a i.fa-user {
+    border: 2px solid #ebebeb;
+    display: inline-block;
+    height: 50px;
+    line-height: 46px;
+    text-align: center;
+    width: 50px;
+    border-radius: 100%;
+    font-size: 20px;
+  }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .mini_cart_wrapper > a i.fa-shopping-bag {
     height: 46px;
@@ -1913,6 +1925,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-top: 2px solid #ebebeb;
   border-right: 2px solid #ebebeb;
   border-bottom: 2px solid #ebebeb;
+  border-left: 2px solid #ebebeb;
   border-radius: 0 5px 5px 0;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {

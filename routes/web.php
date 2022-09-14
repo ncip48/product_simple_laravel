@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class, 'index']);
 Route::get('/detail/{slug}', [ProductController::class, 'detail']);
+
+Auth::routes();
+
+Route::get('/home', [ProductController::class, 'index'])->name('home');
