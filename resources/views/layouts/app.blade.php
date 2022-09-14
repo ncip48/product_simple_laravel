@@ -145,59 +145,63 @@
                 </div>
                 <!--header middel end-->
 
-                <!--mini cart-->
-                <div class="mini_cart">
-                    <div class="cart_close">
-                        <div class="cart_text">
-                            <h3>cart</h3>
-                        </div>
-                        <div class="mini_cart_close">
-                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-                        </div>
-                    </div>
-                    @php
-                        $carts = \App\Models\Cart::where('user_id', Auth::user()->id)
-                            ->join('products', 'carts.product_id', '=', 'products.id')
-                            ->get();
-                        $cart_price = \App\Models\Cart::where('user_id', Auth::user()->id)->sum('total');
-                    @endphp
-                    @foreach ($carts as $cart)
-                        <div class="cart_item">
-                            <div class="cart_img">
-                                <a href="#"><img src="{{ asset('assets/img/' . $cart->image) }}"
-                                        alt=""></a>
-                            </div>
-                            <div class="cart_info">
-                                <a href="#">{{ $cart->name }}</a>
-                                <p>Qty: {{ $cart->qty }} X <span> {{ number_format($cart->price, 0, ',', '.') }}¥
-                                    </span></p>
-                            </div>
-                            <div class="cart_remove">
-                                <a href="#"><i class="ion-android-close"></i></a>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div class="mini_cart_table">
-                        <div class="cart_total">
-                            <span>Sub total:</span>
-                            <span class="price">{{ number_format($cart_price, 0, ',', '.') }}¥</span>
-                        </div>
-                        <div class="cart_total mt-10">
-                            <span>total:</span>
-                            <span class="price">{{ number_format($cart_price, 0, ',', '.') }}¥</span>
-                        </div>
-                    </div>
-                    <div class="mini_cart_footer">
-                        <div class="cart_button">
-                            <a href="cart.html">View cart</a>
-                        </div>
-                        <div class="cart_button">
-                            <a class="active" href="checkout.html">Checkout</a>
-                        </div>
+                @auth
 
+
+                    <!--mini cart-->
+                    <div class="mini_cart">
+                        <div class="cart_close">
+                            <div class="cart_text">
+                                <h3>cart</h3>
+                            </div>
+                            <div class="mini_cart_close">
+                                <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                        @php
+                            $carts = \App\Models\Cart::where('user_id', Auth::user()->id)
+                                ->join('products', 'carts.product_id', '=', 'products.id')
+                                ->get();
+                            $cart_price = \App\Models\Cart::where('user_id', Auth::user()->id)->sum('total');
+                        @endphp
+                        @foreach ($carts as $cart)
+                            <div class="cart_item">
+                                <div class="cart_img">
+                                    <a href="#"><img src="{{ asset('assets/img/' . $cart->image) }}"
+                                            alt=""></a>
+                                </div>
+                                <div class="cart_info">
+                                    <a href="#">{{ $cart->name }}</a>
+                                    <p>Qty: {{ $cart->qty }} X <span> {{ number_format($cart->price, 0, ',', '.') }}¥
+                                        </span></p>
+                                </div>
+                                <div class="cart_remove">
+                                    <a href="#"><i class="ion-android-close"></i></a>
+                                </div>
+                            </div>
+                        @endforeach
+                        <div class="mini_cart_table">
+                            <div class="cart_total">
+                                <span>Sub total:</span>
+                                <span class="price">{{ number_format($cart_price, 0, ',', '.') }}¥</span>
+                            </div>
+                            <div class="cart_total mt-10">
+                                <span>total:</span>
+                                <span class="price">{{ number_format($cart_price, 0, ',', '.') }}¥</span>
+                            </div>
+                        </div>
+                        <div class="mini_cart_footer">
+                            <div class="cart_button">
+                                <a href="cart.html">View cart</a>
+                            </div>
+                            <div class="cart_button">
+                                <a class="active" href="checkout.html">Checkout</a>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <!--mini cart end-->
+                    <!--mini cart end-->
+                @endauth
 
 
                 <!--header bottom satrt-->
