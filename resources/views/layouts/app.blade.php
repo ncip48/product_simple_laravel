@@ -192,10 +192,10 @@
                         </div>
                         <div class="mini_cart_footer">
                             <div class="cart_button">
-                                <a href="cart.html">View cart</a>
+                                <a href="{{ url('cart') }}">View cart</a>
                             </div>
                             <div class="cart_button">
-                                <a class="active" href="checkout.html">Checkout</a>
+                                <a class="active" href="{{ url('checkout') }}">Checkout</a>
                             </div>
 
                         </div>

@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index()
+    {
+        $carts = Cart::where('user_id', Auth::user()->id)->join('products', 'carts.product_id', '=', 'products.id')->get();
+        $cart_total = Cart::where('user_id', Auth::user()->id)->sum('total');
+        return view('cart', compact('carts', 'cart_total'));
+    }
+
+    public function checkout()
+    {
+        $cart = Cart::where('user_id', Auth::user()->id)->join('products', 'carts.product_id', '=', 'products.id')->first();
+        $cart_total = Cart::where('user_id', Auth::user()->id)->sum('total');
+        return view('checkout', compact('cart', 'cart_total'));
+    }
+
     public function add_to_cart(Request $request)
     {
         $product = Product::where('id', $request->product_id)->first();

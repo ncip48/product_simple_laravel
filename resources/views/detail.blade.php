@@ -223,30 +223,3 @@
         </div>
     </div>
 @endsection
-
-@push('customScript')
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=AfxRc3Q8vRvQPK_qm2k4firweuC2r7EKMErp7zUJCjy8wSTeSfkgkPahdSmyQZlikcggyluUlWAtHjfa&vault=true&intent=subscription"
-        data-sdk-integration-source="button-factory"></script>
-    <script>
-        const plan_id = "{{ $product->plan_id }}"
-
-        paypal.Buttons({
-            style: {
-                shape: 'rect',
-                color: 'gold',
-                layout: 'vertical',
-                label: 'subscribe'
-            },
-            createSubscription: function(data, actions) {
-                return actions.subscription.create({
-                    /* Creates the subscription */
-                    plan_id: plan_id
-                });
-            },
-            onApprove: function(data, actions) {
-                alert(data.subscriptionID); // You can add optional success message for the subscriber here
-            }
-        }).render('#paypal-button-container'); // Renders the PayPal button
-    </script>
-@endpush
