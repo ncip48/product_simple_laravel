@@ -51,12 +51,6 @@
                                     <a href="{{ url('/') }}">Home</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{{ url('shop') }}">Shop</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="{{ url('account') }}">my account</a>
-                                </li>
-                                <li class="menu-item-has-children">
                                     <a href="{{ url('about') }}">About Us</a>
                                 </li>
                                 <li class="menu-item-has-children">
@@ -65,7 +59,7 @@
                             </ul>
                         </div>
                         <div class="Offcanvas_footer">
-                            <span><a href="#"><i class="fa fa-envelope-o"></i> demo@example.com</a></span>
+                            <span><a href="#"><i class="fa fa-envelope-o"></i> support@gpbmscript.com</a></span>
                             <ul>
                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -100,9 +94,8 @@
                                     <ul>
                                         <li><a class="active" href="{{ url('/') }}">home</i></a></li>
                                         <li><a href="{{ url('shop') }}">shop</i></a></li>
-                                        <li><a href="{{ url('account') }}">My Account</a></li>
-                                        <li><a href="{{ url('about') }}">About Us</a></li>
                                         <li><a href="{{ url('contact') }}"> Contact Us</a></li>
+                                        <li><a href="{{ url('tos') }}"> Term Of Service</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -294,21 +287,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-5 col-sm-7">
                         <div class="widgets_container contact_us">
-                            <h3>GET THE APP</h3>
-                            <div class="aff_content">
-                                <p><strong>ANTOMI</strong> App is now available on Google Play & App Store. Get it now.
-                                </p>
-                            </div>
-                            <div class="app_img">
-                                <figure class="app_img">
-                                    <a href="#"><img src="{{ asset('assets/img/icon-appstore.png') }}"
-                                            alt=""></a>
-                                </figure>
-                                <figure class="app_img">
-                                    <a href="#"><img src="{{ asset('assets/img/icon-googleplay.png') }}"
-                                            alt=""></a>
-                                </figure>
-                            </div>
+                            <h3></h3>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-5">
@@ -365,7 +344,7 @@
                                         <img src="{{ asset('assets/img/icon-phone.png') }}" alt="">
                                     </div>
                                     <div class="contact_text">
-                                        <p>Hotline Free 24/24: <br> <strong>0123456789</strong></p>
+                                        <p>Hotline Free 24/24: <br> <strong>082112878841</strong></p>
                                     </div>
                                 </div>
                                 <p>support@gpbmscript.com</p>
@@ -373,12 +352,6 @@
 
                             <div class="footer_social">
                                 <ul>
-                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
-                                    </li>
-                                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -391,9 +364,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="copyright_area">
-                            <p>&copy; 2021 <a href="index.html" class="text-uppercase">ANTOMI</a>. Made with <i
-                                    class="fa fa-heart"></i> by <a target="_blank"
-                                    href="https://www.hasthemes.com">HasThemes</a></p>
+                            <p>&copy; 2022 <a href="index.html" class="text-uppercase">GPMBScript.<i></i></a></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">

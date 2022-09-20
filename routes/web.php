@@ -28,3 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index']);
     Route::get('/checkout', [CartController::class, 'checkout']);
 });
+
+Route::get('/tos', function(){
+    return view('term');
+});
