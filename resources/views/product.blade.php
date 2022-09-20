@@ -53,11 +53,13 @@
                     <div class="row no-gutters shop_wrapper grid_list">
                         @foreach ($products as $product)
                             <div class="col-12 ">
-                                <article class="single_product">
+                                <article class="single_product {{ $product->is_stock == 0 ? 'bg-gray' : '' }}">
                                     <figure>
                                         <div class="product_thumb">
-                                            <a class="primary_img" href="{{ url('detail/' . $product->slug) }}"><img
-                                                    src="{{ asset('assets/img/' . $product->image) }}" alt=""></a>
+                                            <img src="{{ asset('assets/img/' . $product->image) }}" alt="">
+                                            @if ($product->is_stock == 0)
+                                                <div class="ribbon ribbon-top-left"><span>Sold out</span></div>
+                                            @endif
                                             <div class="label_product">
                                                 <span class="label_sale">Sale</span>
                                             </div>
@@ -81,9 +83,14 @@
                                             </div>
                                         </div>
                                         <div class="product_content list_content">
-                                            <h4 class="product_name"><a
-                                                    href="{{ url('detail/' . $product->slug) }}">{{ $product->name }}</a>
-                                            </h4>
+                                            @if ($product->is_stock == 0)
+                                                <h4 class="product_name">{{ $product->name }}
+                                                </h4>
+                                            @else
+                                                <h4 class="product_name"><a
+                                                        href="{{ url('detail/' . $product->slug) }}">{{ $product->name }}</a>
+                                                </h4>
+                                            @endif
                                             <div class="product_rating">
                                                 <ul>
                                                     <li><a href="#"><i class="ion-android-star"></i></a>
